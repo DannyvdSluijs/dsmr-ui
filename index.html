@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="dsmr-ui.css"/>
+
+    <title>ESP-DSMR Slimme Meter Logger</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1><div class="d-none d-sm-none">ESP-DSMR</div><small class="text-muted">Slimme Meter Logger</small></h1>
+        <div class="row">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a data-toggle="tab" class="nav-link active" href="#current">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span class="d-none d-sm-none d-md-inline"> Actueel</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="tab" class="nav-link" href="#day-overview" title="Dagoverzicht">
+                        <i class="fas fa-calendar-day"></i>
+                        <span class="d-none d-sm-none d-md-inline"> Dagoverzicht</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="tab" class="nav-link" href="#week-overview" title="Weekoverzicht">
+                        <i class="fas fa-calendar-week"></i>
+                        <span class="d-none d-sm-none d-md-inline"> Weekoverzicht</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="tab" class="nav-link" href="#history" title="Historie">
+                        <i class="fas fa-history"></i>
+                        <span class="d-none d-sm-none d-md-inline"> Historie</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="tab" class="nav-link" href="#info" title="Info">
+                        <i class="fas fa-info"></i>
+                        <span class="d-none d-sm-none d-md-inline"> Info</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="tab-content col-sm-12">
+
+                <!--Current tab-->
+                <div class="tab-pane fade in active show" id="current">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-sm table-hover">
+                                <caption>Huidige energie verbruik</caption>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">Stroom afname</th>
+                                    <td>267 watt</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Stroom teruggave</th>
+                                    <td>0 watt</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-sm table-hover">
+                                <caption>Totaal energie verbruikt</caption>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">Totaal</th>
+                                    <td>468,51 Kwh</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Laagtarief</th>
+                                    <td>209,85 Kwh</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Normaaltarief</th>
+                                    <td>258,65 Kwh</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-sm-12" id="current.power-returns">
+                            <table class="table table-sm table-hover">
+                                <caption>Power returns</caption>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">Total</th>
+                                    <td>0,31 Kwh</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tariff 1</th>
+                                    <td>0.31 Kwh</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tariff 2</th>
+                                    <td>0 Kwh</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <table class="table table-sm table-hover">
+                                <caption>Totaal gas verbruikt</caption>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">Total</th>
+                                    <td>244.2 m3</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                            <div class="col-sm-12">
+                                <table class="table table-sm table-hover">
+                                    <caption>Overig</caption>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">Voltage</th>
+                                        <td>237,2 volt</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Amperage</th>
+                                        <td>1 amp</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                    </div>
+                    <small class="text-muted"> laatst bijgewerkt 30 sec. geleden</small>
+                </div>
+
+                <!--Day-overview tab-->
+                <div class="tab-pane fade in" id="day-overview">
+                    <h2>Dagoverzicht</h2>
+                    <canvas id="day-bar-chart"></canvas>
+                </div>
+
+                <!--Week-overview tab-->
+                <div class="tab-pane fade in" id="week-overview">
+                    <h2>Weekoverzicht</h2>
+                    <canvas id="week-bar-chart"></canvas>
+                </div>
+
+                <!--History tab-->
+                <div class="tab-pane fade in" id="history">
+                    <h2>Historie</h2>
+                    <canvas id="history-bar-chart"></canvas>
+                </div>
+
+                <!--Info tab-->
+                <div class="tab-pane fade in" id="info">
+                    <h2>Info</h2>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-sm table-hover">
+                                <caption>Elektra & Gas meters</caption>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">Identificatie</th>
+                                    <td>XMX5LGF0000443347506</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">P1</th>
+                                    <td>50</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Electriciteits tarief</th>
+                                    <td>0002</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Equipment id</th>
+                                    <td>4530303531303034333334373530363138</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Gas device type</th>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Gas equipment id</th>
+                                    <td>4730303339303031383234363232343138</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-sm table-hover">
+                                <caption>DSMR</caption>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">Author</th>
+                                    <td>Danny van der Sluijs</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Firmware version</th>
+                                    <td>v0.7.7 (Mar 13 2019 20:09:29)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Hostname</th>
+                                    <td>ESP01-DSMR2</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Uptime</th>
+                                    <td>6 days, 0 hours and 49 minutes</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Last reset reason</th>
+                                    <td>Software/System restart</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Compile date</th>
+                                    <td>Mar 13 2019 20:09:29</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Free heap</th>
+                                    <td>20792</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js" integrity="sha256-MZo5XY1Ah7Z2Aui4/alkfeiq3CopMdV/bbkc/Sh41+s=" crossorigin="anonymous"></script>
+    <script src="dsmr-ui.js"></script>
+</body>
+</html>
